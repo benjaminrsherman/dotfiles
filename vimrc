@@ -71,12 +71,6 @@ nmap <silent> <A-Left> :wincmd h<CR>
 nmap <silent> <A-Right> :wincmd l<CR>
 set wmh=0
 
-" Persistent undo
-set undodir=~/.vim/undo/
-set undofile
-set undolevels=1000
-set undoreload=10000
-
 " ctags shortcut
 command! MakeTags !ctags -R .
 
