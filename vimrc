@@ -20,9 +20,10 @@ call vundle#end()            " required
 filetype plugin indent on
 syn on
 
-set path+=**
+set path+=**                          " Search recursively through directories
 set autoread                          " Auto reload changed files
 set wildmenu                          " Tab autocomplete in command mode
+set wildignorecase                    " Ignore case when searching for files
 set backspace=indent,eol,start        " http://vi.stackexchange.com/a/2163
 set laststatus=1                      " Hide status line
 set splitright                        " Open new splits to the right
@@ -34,7 +35,7 @@ set listchars=extends:→               " Show arrow if line continues rightward
 set listchars+=precedes:←             " Show arrow if line continues leftwards
 set nobackup nowritebackup noswapfile " Turn off backup files
 set noerrorbells novisualbell         " Turn off visual and audible bells
-set hlsearch                          " Highlight search results
+"set hlsearch                         " Highlight search results
 set ignorecase smartcase              " Search queries intelligently set case
 set incsearch                         " Show search results as you type
 set timeoutlen=1000 ttimeoutlen=0     " Remove timeout when hitting escape
@@ -42,7 +43,7 @@ set showcmd                           " Show size of visual selection
 
 " interface
 set number relativenumber " Enable relative line numbers
-set colorcolumn=90        " Mark 90 characters
+set colorcolumn=80        " Mark 90 characters
 set scrolloff=5           " Leave 5 lines of buffer when scrolling
 set sidescrolloff=10      " Leave 10 characters of horizontal buffer when scrolling
 
@@ -54,8 +55,8 @@ let g:enable_italic_font = 1
 let g:enable_transparent_background = 1
 
 " Easy tab navigation
-nnoremap <C-Left> :tabprevious<CR>
-nnoremap <C-Right> :tabnext<CR>
+nnoremap <C-H> :tabprevious<CR>
+nnoremap <C-K> :tabnext<CR>
 
 " Tweaks for file browsing
 let g:netrw_banner=0        " disable annoying banner
@@ -79,10 +80,10 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 1
 
 let g:usemarks = 0
 
@@ -91,3 +92,14 @@ let g:hardtime_default_on = 0
 
 " rust.vim
 let g:rustfmt_autosave = 1
+
+" git commit formatting
+augroup gitsetup
+        autocmd!
+
+        " Only set these commands up for git commits
+        autocmd FileType gitcommit
+                \  hi def link gitcommitOverflow Error
+                \| autocmd CursorMoved,CursorMovedI *
+                        \  let &l:textwidth = line('.') == 1 ? 50 : 72
+augroup end
