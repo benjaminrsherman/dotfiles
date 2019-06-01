@@ -43,7 +43,7 @@ set showcmd                           " Show size of visual selection
 
 " interface
 set number relativenumber " Enable relative line numbers
-set colorcolumn=80        " Mark 90 characters
+set colorcolumn=80        " Mark 80 characters
 set scrolloff=5           " Leave 5 lines of buffer when scrolling
 set sidescrolloff=10      " Leave 10 characters of horizontal buffer when scrolling
 
@@ -101,5 +101,5 @@ augroup gitsetup
         autocmd FileType gitcommit
                 \  hi def link gitcommitOverflow Error
                 \| autocmd CursorMoved,CursorMovedI *
-                        \  let &l:textwidth = line('.') == 1 ? 50 : 72
+                        \  let &l:textwidth = line('.') == 1 ? 70 : 75
 augroup end
