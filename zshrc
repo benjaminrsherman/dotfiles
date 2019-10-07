@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH="/home/benjamin/.oh-my-zsh"
+export ZSH="/home/benjamin/.oh-my-zsh"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -101,10 +101,11 @@ alias backlight="sudo backlight"
 #alias ssh-rpi="ssh benjamin@$(curl -s https://hulking-cruiser.glitch.me)"
 #alias rscp="scp benjamin@$(curl -s https://hulking-cruiser.glitch.me)"
 alias rspim="spim -file"
-alias todo="todoist s && todoist --color --indent l"
-alias dim='vim -c "set background=light"'
+alias todo="todoist s && todoist --color --indent l --filter '@Desktop'"
+alias vim="nvim"
+alias dim='nvim -c "set background=light"'
 
-export EDITOR=/bin/vim
+export EDITOR=/bin/nvim
 
 # `less` coloring
 # Colors
@@ -132,3 +133,14 @@ export LESS_TERMCAP_ue=$default
 export LESS_TERMCAP_us=$green
 
 alias 6cord="6cord -t mfa.5Gs4H7qNlb_iHwyh-gcvuSzgR_1MKvniMd5MS-H2RdpuE0rxHf6qNvZdqCj_8Ie4QRjmlCBfkglqdY-f3aP-"
+
+alias bat="bat -p"
+
+alias :wq="echo \"you're not in vim dumbass\""
+
+alias spacemacs="emacs -nw" #emacsclient -nw"
+alias emacs="emacs -nw" #client -nw"
+
+eval $(thefuck --alias)
+
+alias linux-docs="firefox /usr/share/doc/linux/index.html"
