@@ -4,14 +4,14 @@ set nocompatible
 filetype off
 
 call plug#begin('~/.vim/plugged')
-Plug 'vim-syntastic/syntastic'
+"Plug 'vim-syntastic/syntastic'
 Plug 'rust-lang/rust.vim'
 Plug 'LucHermitte/lh-vim-lib'
 Plug 'LucHermitte/lh-brackets'
 Plug 'takac/vim-hardtime'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"Plug 'python/black'
 Plug 'Chiel92/vim-autoformat'
+Plug 'dense-analysis/ale'
 call plug#end()
 
 filetype plugin indent on
@@ -53,8 +53,8 @@ let g:enable_italic_font = 1
 let g:enable_transparent_background = 1
 
 " Easy tab navigation
-nnoremap <C-H> :tabprevious<CR>
-nnoremap <C-K> :tabnext<CR>
+" nnoremap <C-H> :tabprevious<CR>
+" nnoremap <C-K> :tabnext<CR>
 
 " Tweaks for file browsing
 let g:netrw_banner=0        " disable annoying banner
@@ -74,11 +74,11 @@ set wmh=0
 command! MakeTags !ctags -R .
 
 " vim-syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 
-let g:syntastic_ignore_files = ['.py']
+"let g:syntastic_ignore_files = ['.py']
 
 "let g:syntastic_always_populate_loc_list = 1
 "let g:syntastic_auto_loc_list = 1
@@ -241,12 +241,14 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
-
 " autoformat
 let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
 
-let g:formatdef_custom_c='"astyle --mode=c --style=kr"'
-let g:formatters_c = ['custom_c']
+let g:formatdef_astyle='"astyle --mode=c --style=kr"'
+let g:formatters_c = ['astyle']
+let g:formatters_cpp = ['clangformat']
 
 autocmd BufWritePre * execute ':Autoformat'
+
+au BufRead,BufNewFile *.h		set filetype=cpp
