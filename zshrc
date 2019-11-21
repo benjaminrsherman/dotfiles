@@ -106,6 +106,7 @@ alias vim="nvim"
 alias dim='nvim -c "set background=light"'
 
 export EDITOR=/bin/nvim
+export BROWSER-/bin/w3m
 
 # `less` coloring
 # Colors
