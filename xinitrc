@@ -4,4 +4,6 @@ fi
 
 xset r rate 300 35
 
+unclutter -idle 1 &
+
 exec i3
