@@ -107,6 +107,8 @@ alias dim='nvim -c "set background=light"'
 
 export EDITOR=/bin/nvim
 
+path+="/home/benjamin/.local/bin"
+
 # `less` coloring
 # Colors
 default=$(tput sgr0)
@@ -144,3 +146,7 @@ alias emacs="emacs -nw" #client -nw"
 eval $(thefuck --alias)
 
 alias linux-docs="firefox /usr/share/doc/linux/index.html"
+
+bindkey '^o^o' edit-command-line
+
+export PKGEXT=".pkg.tar"
