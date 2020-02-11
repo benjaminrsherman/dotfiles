@@ -1,0 +1,1 @@
+xmodmap ~/.config/xmodmap/Xmodmap

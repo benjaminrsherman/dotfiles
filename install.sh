@@ -1,11 +1,11 @@
 #!/bin/sh
 
-for fname in $(ls -p | grep -v /); do
-	if [ $fname != "install.sh" ]; then
-		cp $fname "$HOME/.$fname"
-	fi
-done
+rsync -a config "$HOME/.config"
+cp gitconfig "$HOME/.gitconfig"
 
-for dirname in $(ls -p | grep /); do
-	rsync -a $dirname "$HOME/.$dirname"
-done
+# set up vim
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+# set up fish
+fish setup_fish.fish
