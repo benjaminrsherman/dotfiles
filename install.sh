@@ -1,7 +1,10 @@
 #!/bin/sh
 
-rsync -a config "$HOME/.config"
-cp gitconfig "$HOME/.gitconfig"
+# set up symlinks
+for directory in "${BASH_SOURCE[0]}/config/*"; do
+	ln -s $directory "$HOME/.config/$(basename $directory)"
+done
+ln -s "${BASH_SOURCE[0]}/gitconfig" "$HOME/.gitconfig"
 
 # set up vim
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
