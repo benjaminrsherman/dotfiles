@@ -1,1 +1,1 @@
-xmodmap ~/.config/xmodmap/Xmodmap
+#xmodmap ~/.config/xmodmap/Xmodmap
