@@ -1,14 +1,28 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR --export EDITOR:/usr/bin/nvim
-SETUVAR --export LESS_TERMCAP_mb:\x1b\x5b31m
-SETUVAR --export LESS_TERMCAP_md:\x1b\x5b91m
-SETUVAR --export LESS_TERMCAP_me:\x1b\x28B\x1b\x5bm
-SETUVAR --export LESS_TERMCAP_se:\x1b\x28B\x1b\x5bm
-SETUVAR --export LESS_TERMCAP_so:\x1b\x5b35m
-SETUVAR --export LESS_TERMCAP_ue:\x1b\x28B\x1b\x5bm
-SETUVAR --export LESS_TERMCAP_us:\x1b\x5b32m
-SETUVAR --export PAGER:less
+SETUVAR --export LANG:en_US\x2eUTF\x2d8
+SETUVAR --export LC_ADDRESS:POSIX
+SETUVAR --export LC_ALL:C
+SETUVAR --export LC_COLLATE:POSIX
+SETUVAR --export LC_CTYPE:en_US\x2eUTF\x2d8
+SETUVAR --export LC_IDENTIFICATION:POSIX
+SETUVAR --export LC_MEASUREMENT:POSIX
+SETUVAR --export LC_MESSAGES:POSIX
+SETUVAR --export LC_MONETARY:POSIX
+SETUVAR --export LC_NAME:POSIX
+SETUVAR --export LC_NUMERIC:POSIX
+SETUVAR --export LC_PAPER:POSIX
+SETUVAR --export LC_TELEPHONE:POSIX
+SETUVAR --export LC_TIME:POSIX
+SETUVAR LESS_TERMCAP_mb:\x1b\x5b31m
+SETUVAR LESS_TERMCAP_md:\x1b\x5b91m
+SETUVAR LESS_TERMCAP_me:\x1b\x28B\x1b\x5bm
+SETUVAR LESS_TERMCAP_se:\x1b\x28B\x1b\x5bm
+SETUVAR LESS_TERMCAP_so:\x1b\x5b35m
+SETUVAR LESS_TERMCAP_ue:\x1b\x28B\x1b\x5bm
+SETUVAR LESS_TERMCAP_us:\x1b\x5b32m
+SETUVAR PAGER:less
 SETUVAR __fish_init_2_39_8:\x1d
 SETUVAR __fish_init_2_3_0:\x1d
 SETUVAR __fish_init_3_x:\x1d
@@ -35,7 +49,7 @@ SETUVAR fish_color_status:red
 SETUVAR fish_color_user:brgreen
 SETUVAR fish_color_valid_path:\x2d\x2dunderline
 SETUVAR fish_greeting:\x1d
-SETUVAR fish_key_bindings:fish_default_key_bindings
+SETUVAR fish_key_bindings:fish_vi_key_bindings
 SETUVAR fish_pager_color_completion:\x1d
 SETUVAR fish_pager_color_description:B3A06D\x1eyellow
 SETUVAR fish_pager_color_prefix:white\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
