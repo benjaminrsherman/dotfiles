@@ -1,8 +1,8 @@
 #!/bin/sh
 
 # set up symlinks
-for directory in "${BASH_SOURCE[0]}/config/*"; do
-	ln -s $directory "$HOME/.config/$(basename $directory)"
+for f in "${BASH_SOURCE[0]}/config/*"; do
+	ln -s $f "$HOME/.config/$(basename $directory)"
 done
 ln -s "${BASH_SOURCE[0]}/gitconfig" "$HOME/.gitconfig"
 ln -s "${BASH_SOURCE[0]}/xinitrc" "$HOME/.xinitrc"
