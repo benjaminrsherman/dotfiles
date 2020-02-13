@@ -1,0 +1,69 @@
+# Packages to be installed
+# Blank lines and lines starting with # are ignored
+
+# Editors!
+neovim
+
+# Shell!
+fish
+tmux
+openssh
+
+# Documentation
+man-db
+man-pages
+texinfo
+
+#### MICROCODE
+# amd-ucode
+# intel-ucode
+
+# Power management
+tlp
+
+# NetworkManager graphical interface
+nm-connection-editor
+network-manager-applet
+
+# Graphical environment
+xorg
+xorg-xinit
+
+# i3
+i3-wm
+i3lock
+i3status
+
+# Programs required for my i3 config
+alacritty
+dmenu
+dunst
+feh
+maim
+unclutter
+xbacklight
+xdg-user-dirs
+
+# Fonts
+noto-fonts
+noto-fonts-cjk
+noto-fonts-emoji
+ttf-ubuntu-font-family
+
+# Sound
+pulseaudio
+pulseaudio-alsa
+
+# Vulkan (needed for proton and some games)
+vulkan-icd-loader
+lib32-vulkan-icd-loader
+#### UNCOMMENT THE NECESSARY DRIVERS ####
+# vulkan-intel
+# nvidia
+# vulkan-raedeon
+
+# Applications
+discord
+firefox
+steam
+steam-native-runtime

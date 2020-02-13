@@ -1,47 +1,57 @@
 #!/bin/sh
 
-#### THIS IS TO SET UP MY ARCH INSTALL ####
-####  IF YOU JUST WANT THE DOTFILES,   ####
-####         USE install.sh            ####
+READVALUE=""
+read_with_default() {
+  prompt=\$1
+  default=\$2
+  echo -ns "\$prompt "
+  if test -Z \$default && \
+     test \$default != "__RESPONSE_REQUIRED__" && \
+	 test \$3 != "NOPRINTDEFAULT"; then
+	echo -ns "(default: \$default) "
+  fi
 
-## INTENDED TO BE RUN AS ROOT IN CHROOT  ##
+  read READVALUE </dev/tty
+  if test -Z \$retval; then
+	if test \$2 = "__RESPONSE_REQUIRED__"; then
+	  echo "Error: This value must be set"
+	  read_with_default \$1 \$2
+	elif test -n \$default; then
+	  READVALUE=\$default
+	fi
+  fi
+}
 
-if test -n $1; then
-	hostname=$1
-else
-	hostname="valkyrie"
-fi
+read_yn() {
+  while :; do
+	read_with_default "\$1 (Y/n)" Y NOPRINTDEFAULT
+	READVALUE=\$(echo \$READVALUE | awk '{print tolower(\$0)}')
+	if test \$READVALUE = 'y' || test \$READVALUE = 'n'; then
+	  break
+	fi
+  done
+}
 
-username=benjamin # CHANGE THIS IF NEEDED
-
-# Set up timezone
-ln -sf /usr/share/zoneinfo/US/Eastern /etc/localtime
-hwclock --systohc
-
-# Set locales
-sed -i 's/^#en_US\.UTF-8$/en_US.UTF-8' /etc/locale.gen
-locale-gen
-echo "LANG=en_US.UTF-8" > /etc/locale.conf
-echo $hostname > /etc/hostname
-
-echo "127.0.0.1    localhost"                       >> /etc/hosts
-echo "::1          localhost"                       >> /etc/hosts
-echo "127.0.1.1    $hostname.localdomain $hostname" >> /etc/hosts
-
-# Set up my user
-useradd -m $username
-echo "$username ALL=(ALL) ALL" >> /etc/sudoers
-mkdir /home/$username/dotfiles
-cp -r $(dirname ${BASH_SOURCE[0]})/* /home/$username/dotfiles
-
-# Run dotfiles install script as the end user
-runuser $username -c "sh /home/$username/dotfiles/install.sh"
-
-chsh -s /usr/bin/fish $username
-
-# Install yay
-git clone https://aur.archlinux.org/packages/yay.git ~/yay
-cd ~/yay
+echo "Installing yay..."
+git clone https://aur.archlinux.org/packages/yay.git
+cd yay
 makepkg -si
 cd ..
 rm -rf yay
+
+echo "Choosing packages..."
+cp default_packages packages_to_install
+$EDITOR packages_to_install_f
+package_list=$(cat packages_to_install | grep -vi '^#' | xargs)
+rm packages_to_install
+
+echo "Installing packages..."
+yay -Syu --noconfirm $package_list
+
+echo "Setting fish as the default shell..."
+chsh -s /usr/bin/fish
+
+echo "Installing configurations..."
+sh ${BASH_SOURCE[0]}/install.sh
+
+echo "Setup complete!"
