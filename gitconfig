@@ -1,3 +1,5 @@
 [user]
-	email = benjamin@bensherman.io
+	email = Benjamin.Sherman@leidos.com
 	name = Benjamin Sherman
+[color]
+	ui = auto
