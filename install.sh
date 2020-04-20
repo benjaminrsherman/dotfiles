@@ -1,11 +1,11 @@
 #!/bin/sh
 
 # set up symlinks
-for f in "${BASH_SOURCE[0]}/config/*"; do
-	ln -s $f "$HOME/.config/$(basename $f)"
+for f in config/*; do
+	ln -s $f $HOME/.config
 done
-ln -s "${BASH_SOURCE[0]}/gitconfig" "$HOME/.gitconfig"
-ln -s "${BASH_SOURCE[0]}/xinitrc" "$HOME/.xinitrc"
+
+ln -s spacemacs $HOME/.spacemacs
 
 # set up vim
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \

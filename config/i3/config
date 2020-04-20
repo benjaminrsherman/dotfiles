@@ -30,7 +30,7 @@ font pango:ubuntu 14
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec xfce4-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -171,6 +171,8 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
 	status_command i3status
+	mode hide
+	modifier None
 }
 
 # Pulse Audio controls
@@ -194,8 +196,6 @@ bindsym $mod+Shift+x exec i3lock -c 000000 -f
 
 bindsym $mod+Shift+b exec maim -s -u | xclip -selection clipboard -t image/png
 bindsym $mod+b exec maim -u | xclip -selection clipboard -t image/png
-
-default_border none
 
 bindsym $mod+Shift+o exec reboot
 bindsym $mod+Shift+p exec shutdown now
