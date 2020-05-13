@@ -12,6 +12,7 @@ Plug 'takac/vim-hardtime'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'Chiel92/vim-autoformat'
 Plug 'dense-analysis/ale'
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 filetype plugin indent on
@@ -250,3 +251,24 @@ let g:formatters_cpp = ['clangformat']
 autocmd BufWritePre * execute ':Autoformat'
 
 au BufRead,BufNewFile *.h		set filetype=cpp
+
+" Ripping off from spacemacs
+let mapleader = " "
+map <Leader><Leader> :
+
+map <Leader>fed :tabe $MYVIMRC <Esc>
+map <Leader>fer :so $MYVIMRC <Esc>
+
+map <Leader><Tab> :tabnext <Esc>
+
+map <Leader>g :G
+map <Leader>gb :Gblame<Esc>
+map <Leader>gw :Gwrite<Esc>
+map <Leader>gc :Gcommit<Esc>
+map <Leader>gs :Gstatus<Esc>
+map <Leader>gm :GMove<Space>
+
+map <Leader>fs :w <Esc>
+map <Leader>ff :tabe<Space>
+map <Leader>qq :q <Esc>
+map <Leader>qa :qa <Esc>
