@@ -327,7 +327,7 @@ font:
 #   - (Linux) user login shell
 #   - (Windows) powershell
 shell:
-  program: /bin/bash
+  program: /bin/fish
   args:
     - --login
 

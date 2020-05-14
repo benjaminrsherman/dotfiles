@@ -2,7 +2,7 @@
 
 # set up symlinks
 for f in config/*; do
-	ln $(pwd)/config/$f $HOME/.config
+	ln -s $(pwd)/$f $HOME/.config
 done
 
 # set up vim

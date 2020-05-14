@@ -4,11 +4,8 @@ set nocompatible
 filetype off
 
 call plug#begin('~/.vim/plugged')
-"Plug 'vim-syntastic/syntastic'
-Plug 'rust-lang/rust.vim'
 Plug 'LucHermitte/lh-vim-lib'
 Plug 'LucHermitte/lh-brackets'
-Plug 'takac/vim-hardtime'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'Chiel92/vim-autoformat'
 Plug 'dense-analysis/ale'
@@ -31,7 +28,7 @@ set ttyfast                           " Send more characters in fast terminals
 set nowrap                            " Don't wrap long lines
 set nobackup nowritebackup noswapfile " Turn off backup files
 set noerrorbells novisualbell         " Turn off visual and audible bells
-"set hlsearch                         " Highlight search results
+set hlsearch                          " Highlight search results
 set ignorecase smartcase              " Search queries intelligently set case
 set incsearch                         " Show search results as you type
 set timeoutlen=1000 ttimeoutlen=0     " Remove timeout when hitting escape
@@ -40,7 +37,7 @@ set showcmd                           " Show size of visual selection
 " interface
 set number relativenumber " Enable relative line numbers
 set cursorline            " Enable line highlighting
-set colorcolumn=80        " Mark 80 characters
+set colorcolumn=90        " Mark 80 characters
 set scrolloff=5           " Leave 5 lines of buffer when scrolling
 set sidescrolloff=10      " Leave 10 characters of horizontal buffer when scrolling
 
@@ -48,12 +45,6 @@ set sidescrolloff=10      " Leave 10 characters of horizontal buffer when scroll
 set background=dark
 colorscheme hybrid_material
 let g:enable_bold_font = 1
-let g:enable_italic_font = 1
-let g:enable_transparent_background = 1
-
-" Easy tab navigation
-" nnoremap <C-H> :tabprevious<CR>
-" nnoremap <C-K> :tabnext<CR>
 
 " Tweaks for file browsing
 let g:netrw_banner=0        " disable annoying banner
@@ -62,36 +53,11 @@ let g:netrw_altv=1          " open splits to the right
 let g:netrw_liststyle=3     " tree view
 let g:netrw_list_hide='/\.vs,Build/.*,Libraries/.*,Include/.*,Resources/Objects/.*,Resources/Textures/.*,Pipfile\.lock,tags,\(^\|\s\s\)\zs\.\S\+'
 
-" movement in multiple windows
-nmap <silent> <A-Up> :wincmd k<CR>
-nmap <silent> <A-Down> :wincmd j<CR>
-nmap <silent> <A-Left> :wincmd h<CR>
-nmap <silent> <A-Right> :wincmd l<CR>
-set wmh=0
-
 " ctags shortcut
 command! MakeTags !ctags -R .
 
-" vim-syntastic
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-
-"let g:syntastic_ignore_files = ['.py']
-
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 1
-
 " lh-brackets
 let g:usemarks = 0
-
-" vim-hardtime
-let g:hardtime_default_on = 0
-
-" rust.vim
-let g:rustfmt_autosave = 1
 
 " git commit formatting
 augroup gitsetup
@@ -104,8 +70,48 @@ augroup gitsetup
                         \  let &l:textwidth = line('.') == 1 ? 70 : 75
 augroup end
 
-" run Black on buffer write
-"autocmd BufWritePre *.py execute ':Black'
+" autoformat
+let g:autoformat_autoindent = 0
+let g:autoformat_retab = 0
+
+let g:formatdef_astyle='"astyle --mode=c --style=kr"'
+let g:formatters_c = ['astyle']
+let g:formatters_cpp = ['clangformat']
+
+autocmd BufWritePre * execute ':Autoformat'
+
+au BufRead,BufNewFile *.h		set filetype=cpp
+
+" Ripping off from spacemacs
+let mapleader = " "
+map <Leader><Leader> :
+
+map <Leader>wh :wincmd h<CR>
+map <Leader>wj :wincmd j<CR>
+map <Leader>wk :wincmd k<CR>
+map <Leader>wl :wincmd l<CR>
+
+map <Leader>fed :tabe $MYVIMRC <CR>
+map <Leader>fer :so $MYVIMRC <CR>
+
+map <Leader><Tab> :tabnext <CR>
+"TODO map <Leader><Shift><Tab> :tabprevious <CR>
+
+map <Leader>g :G
+map <Leader>gb :Gblame<Esc>
+map <Leader>gw :Gwrite<Esc>
+map <Leader>gc :Gcommit<Esc>
+map <Leader>gs :Gstatus<Esc>
+map <Leader>gm :GMove<Space>
+
+map <Leader>fs :w<Esc>
+map <Leader>fa :wa<Esc>
+
+map <Leader>ff :tabedit<Space>
+map <Leader>fe :edit<Space>
+
+map <Leader>qq :q<Esc>
+map <Leader>qa :qa<Esc>
 
 "coc
 " if hidden is not set, TextEdit might fail.
@@ -234,41 +240,5 @@ nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
 nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
 " Search workspace symbols
 nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
-nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
-nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
-" autoformat
-let g:autoformat_autoindent = 0
-let g:autoformat_retab = 0
-
-let g:formatdef_astyle='"astyle --mode=c --style=kr"'
-let g:formatters_c = ['astyle']
-let g:formatters_cpp = ['clangformat']
-
-autocmd BufWritePre * execute ':Autoformat'
-
-au BufRead,BufNewFile *.h		set filetype=cpp
-
-" Ripping off from spacemacs
-let mapleader = " "
-map <Leader><Leader> :
-
-map <Leader>fed :tabe $MYVIMRC <Esc>
-map <Leader>fer :so $MYVIMRC <Esc>
-
-map <Leader><Tab> :tabnext <Esc>
-
-map <Leader>g :G
-map <Leader>gb :Gblame<Esc>
-map <Leader>gw :Gwrite<Esc>
-map <Leader>gc :Gcommit<Esc>
-map <Leader>gs :Gstatus<Esc>
-map <Leader>gm :GMove<Space>
-
-map <Leader>fs :w <Esc>
-map <Leader>ff :tabe<Space>
-map <Leader>qq :q <Esc>
-map <Leader>qa :qa <Esc>
