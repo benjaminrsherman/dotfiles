@@ -200,3 +200,5 @@ bindsym $mod+Shift+p exec shutdown now
 
 bindsym $mod+Shift+comma exec dnd
 bindsym Control+Shift+comma exec dnd
+
+exec xfce4-terminal
