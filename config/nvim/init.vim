@@ -10,6 +10,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'Chiel92/vim-autoformat'
 Plug 'dense-analysis/ale'
 Plug 'tpope/vim-fugitive'
+
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 filetype plugin indent on
@@ -44,7 +47,6 @@ set sidescrolloff=10      " Leave 10 characters of horizontal buffer when scroll
 " color scheme
 set background=dark
 colorscheme hybrid_material
-let g:enable_bold_font = 1
 
 " Tweaks for file browsing
 let g:netrw_banner=0        " disable annoying banner
@@ -86,17 +88,12 @@ au BufRead,BufNewFile *.h		set filetype=cpp
 let mapleader = " "
 map <Leader><Leader> :
 
-map <Leader>wh :wincmd h<CR>
-map <Leader>wj :wincmd j<CR>
-map <Leader>wk :wincmd k<CR>
-map <Leader>wl :wincmd l<CR>
+map <Leader>fed :tabe $MYVIMRC <Esc>
+map <Leader>fer :so $MYVIMRC <Esc>
 
-map <Leader>fed :tabe $MYVIMRC <CR>
-map <Leader>fer :so $MYVIMRC <CR>
+map <Leader><Tab> :tabnext <Esc>
 
-map <Leader><Tab> :tabnext <CR>
-"TODO map <Leader><Shift><Tab> :tabprevious <CR>
-
+" Git config
 map <Leader>g :G
 map <Leader>gb :Gblame<Esc>
 map <Leader>gw :Gwrite<Esc>
@@ -104,14 +101,21 @@ map <Leader>gc :Gcommit<Esc>
 map <Leader>gs :Gstatus<Esc>
 map <Leader>gm :GMove<Space>
 
-map <Leader>fs :w<Esc>
-map <Leader>fa :wa<Esc>
+" Files n searching
+map <Leader>fs :w <Esc>
+map <Leader>ff :Files<CR>
+map <Leader>ft :Tags<CR>
+map <Leader>qq :q <Esc>
+map <Leader>qa :qa <Esc>
 
-map <Leader>ff :tabedit<Space>
-map <Leader>fe :edit<Space>
+map <Leader>/ :Rg<CR>
 
-map <Leader>qq :q<Esc>
-map <Leader>qa :qa<Esc>
+" Buffer movement
+map <Leader>h :wincmd h<CR>
+map <Leader>j :wincmd j<CR>
+map <Leader>k :wincmd k<CR>
+map <Leader>l :wincmd l<CR>
+set wmh=0
 
 "coc
 " if hidden is not set, TextEdit might fail.
