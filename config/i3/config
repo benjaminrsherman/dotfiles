@@ -30,7 +30,7 @@ font pango:ubuntu 14
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec xfce4-terminal
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -171,8 +171,6 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
 	status_command i3status
-	mode hide
-	modifier None
 }
 
 # Pulse Audio controls
