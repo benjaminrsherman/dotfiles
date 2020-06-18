@@ -10,7 +10,10 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'Chiel92/vim-autoformat'
 Plug 'dense-analysis/ale'
 Plug 'tpope/vim-fugitive'
-
+Plug 'lervag/vimtex'
+Plug 'cespare/vim-toml'
+Plug 'posva/vim-vue'
+Plug 'cakebaker/scss-syntax.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 call plug#end()
@@ -80,9 +83,16 @@ let g:formatdef_astyle='"astyle --mode=c --style=kr"'
 let g:formatters_c = ['astyle']
 let g:formatters_cpp = ['clangformat']
 
+let g:formatdef_sassconvert='"sass-convert -i"'
+let g:formatters_scss = ['sassconvert']
+
 autocmd BufWritePre * execute ':Autoformat'
 
 au BufRead,BufNewFile *.h		set filetype=cpp
+
+let g:tex_flavor = 'latex'
+let g:vimtex_view_method = 'zathura'
+let g:vimtex_compiler_progname = 'nvr'
 
 " Ripping off from spacemacs
 let mapleader = " "
@@ -101,6 +111,8 @@ map <Leader>gc :Gcommit<Esc>
 map <Leader>gs :Gstatus<Esc>
 map <Leader>gm :GMove<Space>
 
+map <Leader>g<Space> ``
+
 " Files n searching
 map <Leader>fs :w <Esc>
 map <Leader>ff :Files<CR>
@@ -115,6 +127,12 @@ map <Leader>h :wincmd h<CR>
 map <Leader>j :wincmd j<CR>
 map <Leader>k :wincmd k<CR>
 map <Leader>l :wincmd l<CR>
+map <Leader>wh :wincmd h<CR>
+map <Leader>wj :wincmd j<CR>
+map <Leader>wk :wincmd k<CR>
+map <Leader>wl :wincmd l<CR>
+
+map <Leader>rr :!yarn lint<CR>
 set wmh=0
 
 "coc
@@ -184,10 +202,6 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
 
-" Remap for format selected region
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
-
 augroup mygroup
   autocmd!
   " Setup formatexpr specified filetype(s).
@@ -195,15 +209,6 @@ augroup mygroup
   " Update signature help on jump placeholder
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
-
-" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
-
-" Remap for do codeAction of current line
-nmap <leader>ac  <Plug>(coc-codeaction)
-" Fix autofix problem of current line
-nmap <leader>qf  <Plug>(coc-fix-current)
 
 " Use <tab> for select selections ranges, needs server support, like: coc-tsserver, coc-python
 nmap <silent> <TAB> <Plug>(coc-range-select)
@@ -235,14 +240,16 @@ let g:lightline = {
 
 " Using CocList
 " Show all diagnostics
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent> <Leader>a  :<C-u>CocList diagnostics<cr>
 " Manage extensions
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+nnoremap <silent> <Leader>e  :<C-u>CocList extensions<cr>
 " Show commands
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+nnoremap <silent> <Leader>c  :<C-u>CocList commands<cr>
 " Find symbol of current document
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+nnoremap <silent> <Leader>o  :<C-u>CocList outline<cr>
 " Search workspace symbols
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+nnoremap <silent> <Leader>s  :<C-u>CocList -I symbols<cr>
 " Resume latest coc list
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+nnoremap <silent> <Leader>p  :<C-u>CocListResume<CR>
+
+set statusline^=%{coc#status()}

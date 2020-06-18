@@ -2,3 +2,6 @@
 remove Lock = Caps_Lock
 keysym Escape = Caps_Lock
 keysym Caps_Lock = Escape
+keysym z = u
+keysym u = z
+keysym Print = Alt_R
