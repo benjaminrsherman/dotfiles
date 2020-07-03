@@ -16,6 +16,7 @@ Plug 'posva/vim-vue'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'dag/vim-fish'
 call plug#end()
 
 filetype plugin indent on
