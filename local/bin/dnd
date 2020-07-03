@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if test -e /tmp/dnd; then
+	# De-activate do not disturb
+	killall -SIGUSR2 dunst
+	rm /tmp/dnd
+else
+	# Activate do not disturb
+	killall -SIGUSR1 dunst
+	touch /tmp/dnd
+fi
