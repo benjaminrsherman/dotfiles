@@ -1,4 +1,0 @@
-function custom_key_bindings
-	fish_vi_key_bindings
-end
-set -g fish_key_bindings custom_key_bindings
