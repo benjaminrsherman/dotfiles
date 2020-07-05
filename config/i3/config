@@ -174,17 +174,15 @@ bar {
 }
 
 # Pulse Audio controls
-#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
-
-bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.local/bin/pavolume +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id ~/.local/bin/pavolume -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id ~/.local/bin/pavolume toggle # mute sound
+bindsym F6 exec --no-startup-id ~/.local/bin/pavolume +5% #increase sound volume
+bindsym F5 exec --no-startup-id ~/.local/bin/pavolume -5% #decrease sound volume
+bindsym F3 exec --no-startup-id ~/.local/bin/pavolume toggle # mute sound
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec sudo light -A 5 # increase screen brightness
-bindsym XF86MonBrightnessDown exec sudo light -U 5 # decrease screen brightness
+bindsym Shift+F9 exec brightnessctl set 100% # set to max brightness
+bindsym F9 exec brightnessctl set +5% # increase screen brightness
+bindsym F8 exec brightnessctl set 5%- # decrease screen brightness
+bindsym Shift+F8 exec brightnessctl set 1 # set to min brightness without disabling the screen
 
 hide_edge_borders both
 
