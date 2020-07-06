@@ -204,3 +204,9 @@ bindsym $mod+Shift+comma exec dnd
 bindsym Control+Shift+comma exec dnd
 
 for_window [class="^.*"] sticky enable
+
+exec xmodmap ~/.config/xmodmap/Xmodmap
+
+exec xset r rate 300 35
+
+exec unclutter --timeout 1
