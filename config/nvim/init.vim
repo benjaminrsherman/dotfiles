@@ -14,7 +14,7 @@ Plug 'lervag/vimtex'
 Plug 'cespare/vim-toml'
 Plug 'posva/vim-vue'
 Plug 'cakebaker/scss-syntax.vim'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'https://gitlab.com/benjaminrsherman/fzf-tabbed.git', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'dag/vim-fish'
 call plug#end()
