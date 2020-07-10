@@ -12,6 +12,7 @@ general {
 }
 
 order += "path_exists DND"
+order += "mpris"
 order += "volume master"
 order += "wireless _first_"
 order += "battery all"
@@ -22,6 +23,11 @@ path_exists DND {
 	format = "DND"
 	format_down = ""
 	color_good = "#FF0000"
+}
+
+mpris {
+	format = "[[{title} - {artist}]|[{title}]]"
+	format_none = "no player"
 }
 
 volume master {
