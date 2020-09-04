@@ -189,7 +189,7 @@ hide_edge_borders both
 for_window [class="^.*"] border pixel 1
 new_window 1pixel
 
-exec --no-startup-id feh --bg-fill ~/media/pictures/.wallpapers/kali.jpg
+exec --no-startup-id feh --bg-fill ~/media/pictures/wallpaper.png
 exec dunst -all_key "mod4+BackSpace"
 
 bindsym $mod+Shift+x exec i3lock -c 000000 -f
@@ -210,3 +210,10 @@ exec xmodmap ~/.config/xmodmap/Xmodmap
 exec xset r rate 300 35
 
 exec unclutter --timeout 1
+
+# media controls
+bindsym $mod+comma exec playerctl previous
+bindsym $mod+period exec playerctl play-pause
+bindsym $mod+slash exec playerctl next
+
+exec --no-startup-id dex -a # run autostart desktop entries

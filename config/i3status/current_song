@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if test "$(playerctl -p spotifyd status)" != "Playing"; then
+	exit
+fi
+
+echo -n `playerctl -p spotifyd metadata title`
+echo -n ' - '
+echo -n `playerctl -p spotifyd metadata artist`

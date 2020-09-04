@@ -3,7 +3,7 @@
 SETUVAR --export EDITOR:/usr/bin/nvim
 SETUVAR --export LANG:en_US\x2eUTF\x2d8
 SETUVAR --export LC_ADDRESS:POSIX
-SETUVAR --export LC_ALL:C
+SETUVAR --export LC_ALL:en_US\x2eUTF\x2d8
 SETUVAR --export LC_COLLATE:POSIX
 SETUVAR --export LC_CTYPE:en_US\x2eUTF\x2d8
 SETUVAR --export LC_IDENTIFICATION:POSIX

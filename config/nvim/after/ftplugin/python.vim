@@ -9,3 +9,4 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 
 g:ale_python_mypy_options = '--strict'
+map <Leader>rr :!python %<CR>

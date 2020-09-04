@@ -12,7 +12,7 @@ general {
 }
 
 order += "path_exists DND"
-order += "mpris"
+order += "external_script"
 order += "volume master"
 order += "wireless _first_"
 order += "battery all"
@@ -25,9 +25,10 @@ path_exists DND {
 	color_good = "#FF0000"
 }
 
-mpris {
-	format = "[[{title} - {artist}]|[{title}]]"
-	format_none = "no player"
+external_script {
+    format = " {output}"
+    script_path = "/home/benjamin/.config/i3status/current_song"
+    cache_timeout = 3
 }
 
 volume master {

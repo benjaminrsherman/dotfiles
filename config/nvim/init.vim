@@ -17,6 +17,15 @@ Plug 'cakebaker/scss-syntax.vim'
 Plug 'https://gitlab.com/benjaminrsherman/fzf-tabbed.git', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'dag/vim-fish'
+Plug 'rhysd/vim-llvm'
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+
+Plug 'neovimhaskell/haskell-vim'
+Plug 'alx741/vim-stylishask'
+Plug 'Shougo/vimproc'
+
+Plug 'JuliaEditorSupport/julia-vim'
 call plug#end()
 
 filetype plugin indent on
@@ -41,6 +50,11 @@ set incsearch                         " Show search results as you type
 set timeoutlen=1000 ttimeoutlen=0     " Remove timeout when hitting escape
 set showcmd                           " Show size of visual selection
 set formatoptions+=cro                " Continue comments
+
+set tabstop=4
+set softtabstop=4
+set expandtab
+set shiftwidth=4
 
 " interface
 set number relativenumber " Enable relative line numbers
@@ -81,8 +95,7 @@ augroup end
 let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
 
-let g:formatdef_astyle='"astyle --mode=c --style=kr"'
-let g:formatters_c = ['astyle']
+let g:formatters_c = ['clangformat']
 let g:formatters_cpp = ['clangformat']
 
 let g:formatdef_sassconvert='"sass-convert -i"'
@@ -134,8 +147,15 @@ map <Leader>wj :wincmd j<CR>
 map <Leader>wk :wincmd k<CR>
 map <Leader>wl :wincmd l<CR>
 
-map <Leader>rr :!yarn lint<CR>
 set wmh=0
+
+"pandoc
+let g:pandoc#formatting#mode="A"
+let g:pandoc#formatting#smart_autoformat_on_cursormoved=1
+let g:pandoc#command#autoexec_on_writes=1
+let g:pandoc#command#autoexec_command = "Pandoc pdf"
+
+let g:ale_cpp_clangtidy_options = '-Wall -std=c++17 -x c++'
 
 "coc
 " if hidden is not set, TextEdit might fail.
@@ -251,7 +271,7 @@ nnoremap <silent> <Leader>c  :<C-u>CocList commands<cr>
 nnoremap <silent> <Leader>o  :<C-u>CocList outline<cr>
 " Search workspace symbols
 nnoremap <silent> <Leader>s  :<C-u>CocList -I symbols<cr>
-" Resume latest coc list
-nnoremap <silent> <Leader>p  :<C-u>CocListResume<CR>
+
+nmap <Leader>qf <Plug>(coc-fix-current)
 
 set statusline^=%{coc#status()}
