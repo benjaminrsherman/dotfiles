@@ -1,7 +1,7 @@
-setlocal tabstop=8
-setlocal softtabstop=8
+setlocal tabstop=4
+setlocal softtabstop=4
 setlocal noexpandtab
-setlocal shiftwidth=8
+setlocal shiftwidth=4
 
 let g:syntastic_always_populate_loc_list = 0
 let g:syntastic_auto_loc_list = 0
