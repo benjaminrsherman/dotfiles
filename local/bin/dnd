@@ -2,10 +2,10 @@
 
 if test -e /tmp/dnd; then
 	# De-activate do not disturb
-	killall -SIGUSR2 dunst
+	dunstctl set-paused false
 	rm /tmp/dnd
 else
 	# Activate do not disturb
-	killall -SIGUSR1 dunst
+	dunstctl set-paused true
 	touch /tmp/dnd
 fi
