@@ -7,7 +7,7 @@
     }
   },
   "python": {
-    "jediEnabled": false
+    "jediEnabled": true
   },
   "haskell": {
     "command": "hie-wrapper",

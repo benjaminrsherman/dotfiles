@@ -3,6 +3,8 @@ setlocal softtabstop=2
 setlocal noexpandtab
 setlocal shiftwidth=2
 
+setlocal wrap linebreak nolist
+
 setlocal spell spelllang=en_us
 
 let g:syntastic_always_populate_loc_list = 0
