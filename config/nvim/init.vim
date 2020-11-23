@@ -14,6 +14,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'junegunn/fzf.vim'
 " This uses my custom fork which opens files in a new tab by default
 Plug 'https://gitlab.com/benjaminrsherman/fzf-tabbed.git', { 'do': { -> fzf#install() } }
+Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Misc extensions
 Plug 'LucHermitte/lh-vim-lib'
@@ -123,9 +125,20 @@ autocmd BufWritePre * execute ':Autoformat'
 
 au BufRead,BufNewFile *.h		set filetype=cpp
 
+" ALE
+let g:ale_cpp_clangtidy_options = '-Wall -std=c++17 -x c++'
+
+" Vimtex configuration
 let g:tex_flavor = 'latex'
 let g:vimtex_view_method = 'zathura'
 let g:vimtex_compiler_progname = 'nvr'
+
+" NERDTree configuration
+" Automatically open NERDTree when opening a directory
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+" Close vim if only NERDTree exists
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Ripping off from spacemacs
 let mapleader = " "
@@ -149,6 +162,7 @@ map <Leader>g<Space> ``
 " Files n searching
 map <Leader>fs :w <Esc>
 map <Leader>ff :Files<CR>
+map <Leader>fl :NERDTreeToggleVCS<CR>
 map <Leader>ft :Tags<CR>
 map <Leader>qq :q <Esc>
 map <Leader>qa :qa <Esc>
@@ -173,9 +187,7 @@ let g:pandoc#formatting#smart_autoformat_on_cursormoved=1
 let g:pandoc#command#autoexec_on_writes=1
 let g:pandoc#command#autoexec_command = "Pandoc pdf"
 
-let g:ale_cpp_clangtidy_options = '-Wall -std=c++17 -x c++'
-
-"coc
+"coc (you can probably ignore everything after this point)
 " if hidden is not set, TextEdit might fail.
 set hidden
 
