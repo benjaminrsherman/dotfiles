@@ -4,28 +4,43 @@ set nocompatible
 filetype off
 
 call plug#begin('~/.vim/plugged')
+" General IDE-like plugins (language servers, linting, etc)
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'dense-analysis/ale'
+
+" Tools
+Plug 'Chiel92/vim-autoformat'
+Plug 'tpope/vim-fugitive'
+Plug 'junegunn/fzf.vim'
+" This uses my custom fork which opens files in a new tab by default
+Plug 'https://gitlab.com/benjaminrsherman/fzf-tabbed.git', { 'do': { -> fzf#install() } }
+
+" Misc extensions
 Plug 'LucHermitte/lh-vim-lib'
 Plug 'LucHermitte/lh-brackets'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'Chiel92/vim-autoformat'
-Plug 'dense-analysis/ale'
-Plug 'tpope/vim-fugitive'
-Plug 'lervag/vimtex'
-Plug 'cespare/vim-toml'
-Plug 'posva/vim-vue'
-Plug 'cakebaker/scss-syntax.vim'
-Plug 'https://gitlab.com/benjaminrsherman/fzf-tabbed.git', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'dag/vim-fish'
-Plug 'rhysd/vim-llvm'
-Plug 'vim-pandoc/vim-pandoc'
-Plug 'vim-pandoc/vim-pandoc-syntax'
-
-Plug 'neovimhaskell/haskell-vim'
-Plug 'alx741/vim-stylishask'
 Plug 'Shougo/vimproc'
 
+" BELOW HERE IS ALL LANGUAGE ADDONS
+" Scripting and scripting-like languages
+Plug 'dag/vim-fish'
+Plug 'zah/nim.vim'
 Plug 'JuliaEditorSupport/julia-vim'
+
+" Configuration languages
+Plug 'LnL7/vim-nix'
+Plug 'cespare/vim-toml'
+
+" Frontend web-dev
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'posva/vim-vue'
+
+" Haskell
+Plug 'neovimhaskell/haskell-vim'
+Plug 'alx741/vim-stylishask'
+
+" Misc
+Plug 'rhysd/vim-llvm'
+"Plug 'lervag/vimtex'
 call plug#end()
 
 filetype plugin indent on
@@ -100,6 +115,9 @@ let g:formatters_cpp = ['clangformat']
 
 let g:formatdef_sassconvert='"sass-convert -i"'
 let g:formatters_scss = ['sassconvert']
+
+let g:formatdef_nimpretty='"nimpretty"'
+let g:formatters_nim = ['nimpretty']
 
 autocmd BufWritePre * execute ':Autoformat'
 
