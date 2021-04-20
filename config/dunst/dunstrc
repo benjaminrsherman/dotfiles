@@ -340,6 +340,9 @@
 #    summary = "foobar"
 #    format = ""
 
+[manage_dnd]
+    hide_if = "~/.local/bin/should_hide_notif"
+
 #[history-ignore]
 #    # This notification will not be saved in history
 #    summary = "foobar"

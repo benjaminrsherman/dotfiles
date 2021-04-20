@@ -7,22 +7,21 @@
 # If the above line is not correctly displayed, fix your editor first!
 
 general {
-        colors = true
-        interval = 1
+    colors = true
+    interval = 1
 }
 
-order += "path_exists DND"
+order += "external_script DND"
 order += "external_script"
 order += "volume master"
 order += "wireless _first_"
 order += "battery all"
 order += "tztime local"
 
-path_exists DND {
-	path = "/tmp/dnd"
-	format = "DND"
-	format_down = ""
-	color_good = "#FF0000"
+external_script DND {
+    format = "{output}"
+    script_path = "/home/benjamin/.local/bin/dnd"
+    cache_timeout = 1
 }
 
 external_script {
@@ -40,17 +39,17 @@ volume master {
 }
 
 wireless _first_ {
-        format_up = "W: %bitrate at %essid"
-        format_down = "W: down"
+    format_up = "W: %bitrate at %essid"
+    format_down = "W: down"
 }
 
 battery all {
-        format = "%status %percentage %remaining"
+    format = "%status %percentage %remaining"
 	last_full_capacity = true
 	hide_seconds = true
 	integer_battery_capacity = true
 }
 
 tztime local {
-        format = "%Y-%m-%d %H:%M"
+    format = "%Y-%m-%d %H:%M"
 }

@@ -200,8 +200,10 @@ bindsym $mod+b exec maim -u | xclip -selection clipboard -t image/png
 bindsym $mod+Shift+o exec reboot
 bindsym $mod+Shift+p exec shutdown now
 
-bindsym $mod+Shift+comma exec dnd
-bindsym Control+Shift+comma exec dnd
+bindsym $mod+Shift+comma exec dnd +
+bindsym Control+Shift+comma exec dnd +
+bindsym $mod+Shift+slash exec dnd -
+bindsym Control+Shift+slash exec dnd -
 
 for_window [class="^.*"] sticky enable
 
