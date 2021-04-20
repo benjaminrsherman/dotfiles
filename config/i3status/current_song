@@ -1,9 +1,7 @@
 #!/bin/sh
 
-if test "$(playerctl -p spotifyd status)" != "Playing"; then
-	exit
+if test "$(playerctl status)" = "Playing"; then
+	echo -n $(playerctl metadata title)
+	echo -n ' - '
+	echo -n $(playerctl metadata artist)
 fi
-
-echo -n `playerctl -p spotifyd metadata title`
-echo -n ' - '
-echo -n `playerctl -p spotifyd metadata artist`
