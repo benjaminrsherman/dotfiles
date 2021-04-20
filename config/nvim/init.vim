@@ -42,6 +42,7 @@ Plug 'alx741/vim-stylishask'
 
 " Misc
 Plug 'rhysd/vim-llvm'
+Plug 'jcorbin/vim-lobster'
 "Plug 'lervag/vimtex'
 call plug#end()
 
