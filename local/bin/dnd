@@ -1,37 +1,11 @@
 #!/usr/bin/python3
 
-import sys
+import os
 
-# Read current dnd level
-try:
-    with open("/tmp/dnd_level") as f:
-        dnd_level = int(f.readline())
-except FileNotFoundError:
-    # /tmp/dnd_level doesn't exist, so we're not in dnd
-    dnd_level = 0
-
-if len(sys.argv) == 1:
-    # No argument given, print data about the dnd and exit
-
-    print("DND")
-
-    if dnd_level == 2:
-        print("#FF0000")
-    elif dnd_level == 1:
-        print("#FFFF00")
-    else:
-        print("#000000")
-    sys.exit(0)
-
-elif sys.argv[1] == "+":
-    new_dnd_level = min(2, dnd_level + 1)
-
-elif sys.argv[1] == "-":
-    new_dnd_level = max(0, dnd_level - 1)
-
+if os.path.exists("/tmp/dnd"):
+    os.system("killall -SIGUSR2 dunst")
+    os.remove("/tmp/dnd")
 else:
-    print(f"Invalid argument '{sys.argv[1]}'", file=sys.stderr)
-    sys.exit(1)
-
-with open("/tmp/dnd_level", "w") as f:
-    f.write(str(new_dnd_level))
+    os.system("killall -SIGUSR1 dunst")
+    with open("/tmp/dnd", "w") as f:
+        f.write(".")

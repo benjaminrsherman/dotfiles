@@ -11,17 +11,18 @@ general {
     interval = 1
 }
 
-order += "external_script DND"
+order += "path_exists DND"
 order += "external_script"
 order += "volume master"
 order += "wireless _first_"
 order += "battery all"
 order += "tztime local"
 
-external_script DND {
-    format = "{output}"
-    script_path = "/home/benjamin/.local/bin/dnd"
-    cache_timeout = 1
+path_exists DND {
+    path = "/tmp/dnd"
+    format = "DND"
+    color_good = "#FF0000"
+    format_down = ""
 }
 
 external_script {
