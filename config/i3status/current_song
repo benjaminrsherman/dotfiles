@@ -1,7 +1,9 @@
 #!/bin/sh
 
-if test "$(playerctl status)" = "Playing"; then
-	echo -n $(playerctl metadata title)
+chromium_players="$(playerctl -l | grep chromium | xargs | sed 's/ /,/g')"
+
+if test "$(playerctl -i "$chromium_players" status)" = "Playing"; then
+	echo -n $(playerctl -i "$chromium_players" metadata title)
 	echo -n ' - '
-	echo -n $(playerctl metadata artist)
+	echo -n $(playerctl -i "$chromium_players" metadata artist)
 fi
