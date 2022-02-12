@@ -12,3 +12,5 @@
 	required = true
 [github]
 	user = benjaminrsherman
+[core]
+	excludesFile = ~/.gitignore

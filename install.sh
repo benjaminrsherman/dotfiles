@@ -14,8 +14,9 @@ done
 
 ln -s $(pwd)/xinitrc $HOME/.xinitrc
 ln -s $(pwd)/gitconfig $HOME/.gitconfig
+ln -s $(pwd)/gitignore $HOME/.gitignore
 ln -s $(pwd)/clang-format $HOME/.clang-format
 
 # set up vim
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
