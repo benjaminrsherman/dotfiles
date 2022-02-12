@@ -16,6 +16,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'https://gitlab.com/benjaminrsherman/fzf-tabbed.git', { 'do': { -> fzf#install() } }
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'github/copilot.vim'
 
 " Misc extensions
 Plug 'LucHermitte/lh-vim-lib'
@@ -35,10 +36,20 @@ Plug 'cespare/vim-toml'
 " Frontend web-dev
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'posva/vim-vue'
+Plug 'nelsyeung/twig.vim'
+
+" Elixir
+Plug 'elixir-editors/vim-elixir'
 
 " Haskell
 Plug 'neovimhaskell/haskell-vim'
 Plug 'alx741/vim-stylishask'
+
+" Idris
+Plug 'edwinb/idris2-vim'
+
+" Supercollider
+Plug 'supercollider/scvim', {'branch': 'main'}
 
 " Misc
 Plug 'rhysd/vim-llvm'
