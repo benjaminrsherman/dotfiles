@@ -6,9 +6,6 @@
       "filetypes": ["go"]
     }
   },
-  "python": {
-    "jediEnabled": true
-  },
   "languageserver": {
     "haskell": {
       "command": "haskell-language-server-wrapper",
