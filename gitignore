@@ -15,7 +15,6 @@
 *.sig
 
 pkg/
-src/
 
 ###########
 # C / C++ #
@@ -90,7 +89,6 @@ CMakeCache.txt
 CMakeFiles
 CMakeScripts
 Testing
-Makefile
 cmake_install.cmake
 install_manifest.txt
 compile_commands.json
@@ -453,9 +451,6 @@ venv.bak/
 
 # Rope project settings
 .ropeproject
-
-# mkdocs documentation
-/site
 
 # mypy
 .mypy_cache/
